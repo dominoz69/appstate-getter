@@ -1,5 +1,5 @@
 import express from 'express';
-import  login  from 'daiki-fca';
+import login from 'daiki-fca';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import fs from 'fs/promises';
@@ -72,9 +72,12 @@ app.post('/get-appstate', async (req, res) => {
     }
 });
 
-
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/get-appstate', (req, res) => {
+    res.status(400).json({ success: false, message: 'Please put your email and password to get appstate and check your code.' });
 });
 
 app.listen(PORT, () => {
